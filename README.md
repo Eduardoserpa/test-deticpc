@@ -18,8 +18,8 @@ Com o ambiente virtual ativado, as dependências podem ser instaladas:
 Por fim, o arquivo **.env** contendo os dados privados de autenticação deve ser colocado na pasta **test-deticpc/src**.
 
 ## Ativando os componentes
-O banco de dados, o ambiente virtual e o site são colocados no ar com os seguintes comandos:
+O banco de dados, o ambiente virtual e o site vão ao ar com os seguintes comandos (na pasta **test-deticpc**):
 
     sudo systemctl start postgresql
     source pyenv/bin/activate
-    python src/manage.py runserver
+    python manage.py runserver localhost:5000
