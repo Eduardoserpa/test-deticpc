@@ -22,7 +22,27 @@ O banco de dados, o ambiente virtual e o site vão ao ar com os seguintes comand
 
     sudo systemctl start postgresql
     source pyvenv/bin/activate
-    python manage.py runserver localhost:5000
+    python manage.py runserver localhost:5001
+
+# Configurando um servidor PostgreSQL de exemplo
+O arquivo *src/settings.py* aponta para um BD SQLite por padrão, então o campo *DATABASES* precisa ser alterado para apontar pra outro SGBD para cumprir certos requisitos (neste caso, PostgreSQL).
+
+Após a instalação do pacote **postgresql** a nível de Sistema Operacional,  o DB precisa ser iniciado e configurado com o perfil padrão **psql**:
+
+    sudo systemctl start postgresql
+    sudo -iu postgresql
+
+    initdb -D /var/lib/postgres/data
+    createuser --interactive --pwprompt
+    createdb -O ownerRoleName myDatabaseName
+    psql -d MyDatabaseName
+
+Após a definição das classes relevantes em appName/models.py, é necessário realizar as migrações e configurar um super-usuário para gerenciar em homeURL/admin:
+
+    python src/manage.py makemigrations
+    python src/manage.py migrate
+    python src/manage.py createsuperuser
+    python src/manage.py runserver localhost:5432
 
 # Explicando dependências relevantes
 Requisitos básicos instalados com Django:
