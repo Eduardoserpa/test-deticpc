@@ -6,11 +6,12 @@ from .serializers import * #Arma, Municao, Objeto, Calibre, Objeto_tipo
 # Endpoints de API: CRUD para objetos individuais + lista de objetos por classe
 # CRUD completo: Arma
 class ArmaCreate(generics.CreateAPIView):
-    queryset1 = Objeto.objects.all(),
-    serializer_class1 = ObjetoSerializer
 
-    queryset2 = Arma.objects.all(),
-    serializer_class2 = ArmaSerializer
+    queryset1 = Objeto.objects.all(),
+    serializer_class = ObjetoSerializer
+
+    #queryset2 = Arma.objects.all(),
+    #serializer_class2 = ArmaSerializer
 
 class ArmaDetail(generics.RetrieveAPIView):
     queryset = Arma.objects.all()
@@ -29,10 +30,10 @@ class ArmaDelete(generics.RetrieveDestroyAPIView):
 class MunicaoCreate(generics.CreateAPIView):
     # Endpoint da API que permite criar objetos das classes Objeto e Municao
     queryset1 = Objeto.objects.all(),
-    serializer_class1 = ObjetoSerializer
+    serializer_class = ObjetoSerializer
 
-    queryset2 = Municao.objects.all(),
-    serializer_class2 = MunicaoSerializer
+    #queryset2 = Municao.objects.all(),
+    #serializer_class2 = MunicaoSerializer
 
 class MunicaoDetail(generics.RetrieveAPIView):
     # Endpoint de API que retorna uma instância de Municao pela chave primária (id)
