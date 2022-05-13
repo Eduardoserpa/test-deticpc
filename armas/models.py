@@ -20,9 +20,21 @@ class Objeto_tipo(models.Model):
     id = models.PositiveSmallIntegerField #SMALLINT
     tipo_de_objeto = models.CharField(max_length=64) #VARCHAR(64)
 
+    def __str__(self):
+        field_values = []
+        for field in self._meta.get_fields():
+            field_values.append(str(getattr(self, field.name, '')))
+        return ' '.join(field_values)
+
 class Calibre(models.Model):
     id = models.PositiveSmallIntegerField #SMALLINT
     desc_calibre = models.CharField(max_length=45) #VARCHAR(45)
+
+    def __str__(self):
+        field_values = []
+        for field in self._meta.get_fields():
+            field_values.append(str(getattr(self, field.name, '')))
+        return ' '.join(field_values)
 
 class Objeto(models.Model):
     #objects = ArmasManager()
@@ -30,6 +42,12 @@ class Objeto(models.Model):
 
     id = models.PositiveBigIntegerField #BIGINT
     objeto_tipo_id = models.ForeignKey("Objeto_tipo", on_delete=models.SET_NULL, null=True) #SMALLINT
+
+    def __str__(self):
+        field_values = []
+        for field in self._meta.get_fields():
+            field_values.append(str(getattr(self, field.name, '')))
+        return ' '.join(field_values)
 
 class Arma(models.Model):
     #objects = ArmasManager()
@@ -43,6 +61,12 @@ class Arma(models.Model):
     valor_estimado = models.DecimalField(max_digits = 30, decimal_places=15) #DOUBLE
     imagem = models.CharField(max_length=128) #VARCHAR(128)
 
+    def __str__(self):
+        field_values = []
+        for field in self._meta.get_fields():
+            field_values.append(str(getattr(self, field.name, '')))
+        return ' '.join(field_values)
+
 class Municao(models.Model):
     #objects = ArmasManager()
     #Para instanciar o objeto: municao = Municao.objects.criar_municao
@@ -52,3 +76,9 @@ class Municao(models.Model):
     marca = models.CharField(max_length=64) #VARCHAR(64)
     modelo = models.CharField(max_length=64) #VARCHAR(64)
     valor_estimado = models.DecimalField(max_digits = 30, decimal_places=15) #DOUBLE
+
+    def __str__(self):
+        field_values = []
+        for field in self._meta.get_fields():
+            field_values.append(str(getattr(self, field.name, '')))
+        return ' '.join(field_values)
