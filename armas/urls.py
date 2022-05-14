@@ -1,8 +1,11 @@
 from django.urls import include, path
 from .views import * #Arma, Municao, Objeto, Calibre, Objeto_tipo
+from armas import views
 
 # Padrões de URL para acessar operações CRUD ou para retornar lista de objetos
 urlpatterns = [
+    path('', views.index, name='index'),
+
     path('create-arma/', ArmaCreate.as_view(), name='create-arma'),
     path('arma/<int:id>/', ArmaDetail.as_view(), name='retrieve-arma'),
     path('update/<int:id>/', ArmaUpdate.as_view(), name='update-arma'),

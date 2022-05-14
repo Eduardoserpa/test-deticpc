@@ -82,3 +82,4 @@ class Municao(models.Model):
         for field in self._meta.get_fields():
             field_values.append(str(getattr(self, field.name, '')))
         return ' '.join(field_values)
+    

@@ -7,11 +7,11 @@ from .serializers import * #Arma, Municao, Objeto, Calibre, Objeto_tipo
 # CRUD completo: Arma
 class ArmaCreate(generics.CreateAPIView):
 
-    queryset1 = Objeto.objects.all(),
-    serializer_class = ObjetoSerializer
+    queryset1 = Arma.objects.all(),
+    serializer_class = ArmaSerializer
 
-    #queryset2 = Arma.objects.all(),
-    #serializer_class2 = ArmaSerializer
+    #queryset2 = Objeto.objects.all(),
+    #serializer_class2 = ObjetoSerializer
 
 class ArmaDetail(generics.RetrieveAPIView):
     queryset = Arma.objects.all()
@@ -28,15 +28,13 @@ class ArmaDelete(generics.RetrieveDestroyAPIView):
 
 # CRUD completo: Municao
 class MunicaoCreate(generics.CreateAPIView):
-    # Endpoint da API que permite criar objetos das classes Objeto e Municao
-    queryset1 = Objeto.objects.all(),
-    serializer_class = ObjetoSerializer
+    queryset1 = Municao.objects.all(),
+    serializer_class = MunicaoSerializer
 
-    #queryset2 = Municao.objects.all(),
+    #queryset2 = Objeto.objects.all(),
     #serializer_class2 = MunicaoSerializer
 
 class MunicaoDetail(generics.RetrieveAPIView):
-    # Endpoint de API que retorna uma instância de Municao pela chave primária (id)
     queryset = Municao.objects.all()
     serializer_class = MunicaoSerializer
 
@@ -69,3 +67,14 @@ class CalibreList(generics.ListAPIView):
 class Objeto_tipoList(generics.ListAPIView):
     queryset = Objeto_tipo.objects.all()
     serializer_class = Objeto_tipoSerializer
+
+def index(request):
+    num_armas = Arma.objects.all().count()
+    num_municao = Municao.objects.all().count()
+
+    context = {
+        'num_armas': num_armas,
+        'num_municao': num_municao,
+    }
+
+    return render(request, 'index.html', context=context)

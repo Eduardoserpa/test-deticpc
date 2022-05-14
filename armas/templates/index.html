@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Catálogo de Armamentos</h1>
+  <p>A partir desta página, você pode navegar pelo site e acessar o banco de dados da <em>DETIC-PC CE</em>.</p>
+  <h2>Dynamic content</h2>
+  <p>Informações sobre este banco de dados:</p>
+  <ul>
+    <li><strong>Instâncias de armas cadastradas:</strong> {{ num_armas }}</li>
+    <li><strong>Instâncias de munição cadastradas:</strong> {{ num_municao }}</li>
+    <li><strong>Links para listas de objetos no banco de dados:</strong><br>
+        <a href="localhost:5000/armas/list-arma/">Lista de armas</a><br>
+        <a href="localhost:5000/armas/list-municao/">Lista de munições</a><br>
+        <a href="localhost:5000/armas/list-objeto/">Lista de objetos em geral (armas e munições)</a><br>
+        <a href="localhost:5000/armas/list-calibre/">Lista de calibres de armas ou de munições</a><br>
+        <a href="localhost:5000/armas/list-objeto-tipo/">Lista de tipos de objeto no banco de dados</a><br>
+    </li>
+    <li><strong>Links para cadastrar objetos:</strong><br>
+        <a href="localhost:5000/armas/create-arma/">Cadastrar nova arma</a><br>
+        <a href="localhost:5000/armas/create-municao/">Cadastrar nova munição</a><br>
+    </li>
+    <li><strong>Para ver, alterar ou apagar um objeto, adicione ao final da URL o id do objeto :</strong><br>
+        <a href="localhost:5000/armas/arma/">Ver arma</a><br>
+        <a href="localhost:5000/armas/municao/">Ver munição</a><br>
+        <a href="localhost:5000/armas/update/">Alterar objeto</a><br>
+        <a href="localhost:5000/armas/delete/">Apagar objeto</a><br>
+    </li>
+  </ul>
+{% endblock %} 
