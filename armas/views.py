@@ -6,12 +6,23 @@ from .serializers import * #Arma, Municao, Objeto, Calibre, Objeto_tipo
 # Endpoints de API: CRUD para objetos individuais + lista de objetos por classe
 # CRUD completo: Arma
 class ArmaCreate(generics.CreateAPIView):
+    """def post(self, request):
+        data = request.data
+
+        objeto = Objeto.objects.get(user=request.user)
+        data['objeto'] = objeto.id
+        serializer = ObjetoSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)"""
 
     queryset1 = Arma.objects.all(),
     serializer_class = ArmaSerializer
 
     #queryset2 = Objeto.objects.all(),
-    #serializer_class2 = ObjetoSerializer
+    #serializer_class = ObjetoSerializer
 
 class ArmaDetail(generics.RetrieveAPIView):
     queryset = Arma.objects.all()
@@ -69,10 +80,12 @@ class Objeto_tipoList(generics.ListAPIView):
     serializer_class = Objeto_tipoSerializer
 
 def index(request):
+    num_objeto = Objeto.objects.all().count()
     num_armas = Arma.objects.all().count()
     num_municao = Municao.objects.all().count()
 
     context = {
+        'num_objeto': num_objeto,
         'num_armas': num_armas,
         'num_municao': num_municao,
     }

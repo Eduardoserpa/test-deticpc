@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Sobre este projeto</h1>
+  <p>Este site foi implementado utilizando Django REST Framework, PostgreSQL e A partir desta página, você pode navegar pelo site e acessar o banco de dados da <em>DETIC-PC CE</em>.</p>
+  <h2>Tecnologias utilizadas:</h2>
+  <p></p>
+  <ul>
+    <li><strong>Instâncias de armas cadastradas:</strong> {{ num_armas }}</li>
+    <li><strong>Instâncias de munição cadastradas:</strong> {{ num_municao }}</li>
+    <li><strong>Django:</strong><br>
+        <a href="">Documentação oficial</a><br>
+        <a href="">Repositório</a><br>
+    </li>
+    <li><strong>Django REST Framework:</strong><br>
+      <a href="">Documentação oficial</a><br>
+      <a href="">Repositório</a><br>
+    </li>
+    <li><strong>PostgreSQL:</strong><br>
+      <a href="">Documentação oficial</a><br>
+      <a href="">Repositório</a><br>
+    </li>
+  </ul>
+{% endblock %} 

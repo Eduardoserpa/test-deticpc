@@ -3,10 +3,11 @@
 {% block content %}
   <h1>Catálogo de Armamentos</h1>
   <p>A partir desta página, você pode navegar pelo site e acessar o banco de dados da <em>DETIC-PC CE</em>.</p>
-  <h2>Dynamic content</h2>
-  <p>Informações sobre este banco de dados:</p>
+  <h2>Informações sobre este banco de dados</h2>
+  <p></p>
   <ul>
     <base href="http://localhost:5000/armas/" target="_blank">
+    <li><strong>Total de objetos cadastrados:</strong> {{ num_objeto }}</li>
     <li><strong>Instâncias de armas cadastradas:</strong> {{ num_armas }}</li>
     <li><strong>Instâncias de munição cadastradas:</strong> {{ num_municao }}</li>
     <li><strong>Links para listas de objetos no banco de dados:</strong><br>

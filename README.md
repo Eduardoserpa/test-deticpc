@@ -51,12 +51,12 @@ Requisitos básicos instalados com Django:
     Django==4.0.4
     sqlparse==0.4.2
 
-Pacote Django REST Framework:
+Comunicação com o banco de dados via HTTP:
 djangorestframework==3.13.1
 pytz==2022.1
 
 
-Conectando Python ao PostgreSQL:
+Adaptador de PostgreSQL para Python:
 
     psycopg2==2.9.3
 
